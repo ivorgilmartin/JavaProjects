@@ -9,19 +9,18 @@ public class Email {
     private int mailboxCapacity = 500;
     private String alternateEmail;
     private int defaultPasswordLength = 10;
-    private String companySuffix = "aeycompany.com";
+    private String companySuffix = "company.com";
 
     // Constructor to receive the first name and last name
     public Email(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
 
-        // Call a method asking for the department - return the dpartment
+        // Call a method asking for the department - return the department
         this.department = setDepartment();
 
         // Call a method that returns a random password
         this.password = randomPassword(defaultPasswordLength);
-        System.out.println("Your password is: " + this.password);
 
         // Combine elements to generate email
         email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department + "." + companySuffix;
@@ -30,8 +29,8 @@ public class Email {
 
     // Ask for the department
     private String setDepartment() {
-        System.out.print("New worker: " + firstName
-                + ".\nDEPARTMENT CODES\n1 for Sales\n2 for Development\n3 for Accounting\n0 for none\nEnter department code: ");
+        System.out.print(
+                "DEPARTMENT CODES..\n1 for Sales\n2 for Development\n3 for Accounting\n0 for none\nENTER CODE: ");
         Scanner in = new Scanner(System.in);
         int depChoice = in.nextInt();
         if (depChoice == 1) {
@@ -48,7 +47,7 @@ public class Email {
 
     // Generare a random password
     private String randomPassword(int length) {
-        String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%";
+        String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         char[] password = new char[length];
         for (int i = 0; i < length; i++) {
             int rand = (int) (Math.random() * passwordSet.length());
@@ -85,8 +84,8 @@ public class Email {
     }
 
     public String showInfo() {
-        return "DISPLAY NAME: " + firstName + " " + lastName + "\nCOMPANY EMAIL: " + email + "\nMAILBOX CAPACITY: "
-                + mailboxCapacity + "mb";
+        return "ACCOUNT NAME: " + firstName + " " + lastName + "\nCOMPANY EMAIL: " + email + "\nPASSWORD: " + password
+                + "\nMAILBOX CAPACITY: " + mailboxCapacity + "mb";
     }
 
 }
